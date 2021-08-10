@@ -1,4 +1,4 @@
-package com.nashply.topShopService.Service;
+package com.nashply.topShopService.service;
 import com.nashply.topShopService.exception.TopNotFoundException;
 
 import com.nashply.topShopService.model.StandardTop;

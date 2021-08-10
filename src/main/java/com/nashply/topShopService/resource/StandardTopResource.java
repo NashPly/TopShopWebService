@@ -1,6 +1,6 @@
-package com.nashply.topShopService;
+package com.nashply.topShopService.resource;
 
-import com.nashply.topShopService.Service.StandardTopService;
+import com.nashply.topShopService.service.StandardTopService;
 import com.nashply.topShopService.model.StandardTop;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/StandardTops")
 public class StandardTopResource {
 
     private final StandardTopService standardTopService;
