@@ -1,5 +1,6 @@
 package com.nashply.topShopService.service;
 
+import com.nashply.topShopService.exception.TopNotFoundException;
 import com.nashply.topShopService.model.OrderList;
 import com.nashply.topShopService.repo.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,14 @@ public class OrderService {
         return this.orderRepo.save(orderList);
     }
 
-    public List<OrderList> newOrder(){
-        List<OrderList> orderList = new ArrayList<>();
-        orderList.add(new OrderList("Standard Kitchen", "Standard", 1));
-        orderList.add(new OrderList("Standard Vanity", "Standard", 0));
-        orderList.add(new OrderList("Right L Corner","Point_Right_L_Corner", 0));
-        orderList.add(new OrderList("Left L Corner", "Point_Left_L_Corner", 0));
-        orderList.add(new OrderList("U Shaped", "U_Shaped_Legs", 0));
+    public OrderList newOrder(){
+        OrderList order  = new OrderList(0,0,0,0,
+                0,0);
+        return this.orderRepo.save(order);
+    }
 
-        return this.orderRepo.saveAll(orderList);
+    public OrderList findOrderListById(Integer id){
+        return orderRepo.findOrderListById(id)
+                .orElseThrow(() -> new TopNotFoundException("Order by id" + id + " was not found"));
     }
 }

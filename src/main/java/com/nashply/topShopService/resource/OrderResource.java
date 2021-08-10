@@ -19,9 +19,15 @@ public class OrderResource {
     }
 
     @GetMapping("/newOrder")
-    public ResponseEntity<List<OrderList>> getOrder(){
-        List<OrderList> orderLists = orderService.newOrder();
-        return new ResponseEntity<>(orderLists, HttpStatus.OK);
+    public ResponseEntity<OrderList> newOrder(){
+        OrderList order = orderService.newOrder();
+        return new ResponseEntity<>(order, HttpStatus.OK);
+    }
+
+    @GetMapping("/getOrder/{id}")
+    public ResponseEntity<OrderList> getOrderById(@PathVariable("id") Integer id){
+        OrderList order = orderService.findOrderListById(id);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     @PutMapping("/save/{id}")

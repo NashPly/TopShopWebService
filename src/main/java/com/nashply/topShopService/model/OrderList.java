@@ -9,17 +9,26 @@ public class OrderList implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Integer id;
-    private String type;
-    private String fileName;
-    private Integer quantity;
-
-    public OrderList(String type, String file, Integer quantity) {
-        this.type = type;
-        this.fileName = file;
-        this.quantity = quantity;
-    }
+    private Integer kitchenTop;
+    private Integer vanityTop;
+    private Integer barTop;
+    private Integer rightLCorner;
+    private Integer leftLCorner;
+    private Integer uShaped;
 
     public OrderList(){}
+
+    public OrderList(Integer kitchenTop, Integer vanityTop,
+                     Integer barTop, Integer rightLCorner,
+                     Integer leftLCorner, Integer uShaped) {
+        this.id = id;
+        this.kitchenTop = kitchenTop;
+        this.vanityTop = vanityTop;
+        this.barTop = barTop;
+        this.rightLCorner = rightLCorner;
+        this.leftLCorner = leftLCorner;
+        this.uShaped = uShaped;
+    }
 
     public Integer getId() {
         return id;
@@ -29,27 +38,51 @@ public class OrderList implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public Integer getKitchenTop() {
+        return kitchenTop;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setKitchenTop(Integer kitchenTop) {
+        this.kitchenTop = kitchenTop;
     }
 
-    public String getFile() {
-        return fileName;
+    public Integer getVanityTop() {
+        return vanityTop;
     }
 
-    public void setFile(String file) {
-        this.fileName = file;
+    public void setVanityTop(Integer vanityTop) {
+        this.vanityTop = vanityTop;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getBarTop() {
+        return barTop;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setBarTop(Integer barTop) {
+        this.barTop = barTop;
+    }
+
+    public Integer getRightLCorner() {
+        return rightLCorner;
+    }
+
+    public void setRightLCorner(Integer rightLCorner) {
+        this.rightLCorner = rightLCorner;
+    }
+
+    public Integer getLeftLCorner() {
+        return leftLCorner;
+    }
+
+    public void setLeftLCorner(Integer leftLCorner) {
+        this.leftLCorner = leftLCorner;
+    }
+
+    public Integer getuShaped() {
+        return uShaped;
+    }
+
+    public void setuShaped(Integer uShaped) {
+        this.uShaped = uShaped;
     }
 }
