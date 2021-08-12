@@ -26,18 +26,24 @@ public class OrderResource {
         return new ResponseEntity<>(returnedOrder, HttpStatus.OK);
     }
 
+    @GetMapping("/blankOrder")
+    public ResponseEntity<Orders> getBlankOrder(){
+        Orders returnedOrder = orderService.getBlankOrder();
+        return new ResponseEntity<>(returnedOrder, HttpStatus.OK);
+    }
+
     @GetMapping("/getOrder/{id}")
     public ResponseEntity<Orders> getOrderListById(@PathVariable("id") Integer id){
         Orders order = orderService.findOrdersById(id);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
-    @PostMapping("/save/")
+    @PostMapping("/save")
     public ResponseEntity<Orders> saveOrder(@RequestBody Orders order){
         orderService.saveOrder(order);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PutMapping("/update/")
+    @PutMapping("/update")
     public ResponseEntity<Orders> updateOrderList(@RequestBody Orders order){
         orderService.updateOrder(order);
         return new ResponseEntity<>(HttpStatus.OK);

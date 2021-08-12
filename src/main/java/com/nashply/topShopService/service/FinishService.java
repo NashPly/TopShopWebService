@@ -1,6 +1,7 @@
 package com.nashply.topShopService.service;
 
 import com.nashply.topShopService.model.Finish;
+import com.nashply.topShopService.model.Profile;
 import com.nashply.topShopService.repo.FinishRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,4 +20,7 @@ public class FinishService {
         return finishRepo.findAll();
     }
 
+    public Finish getFinishByID(Integer id){
+        return finishRepo.findFinishById(id);
+    }
 }

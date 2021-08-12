@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FinishRepo extends JpaRepository<Finish, Integer> {
 
+    Finish findFinishById(Integer id);
 }

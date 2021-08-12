@@ -6,9 +6,10 @@ import java.io.Serializable;
 @Entity
 public class Finish implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)//Enter strategy to be specific
+    //@GeneratedValue(strategy = GenerationType.AUTO)//Enter strategy to be specific
     @Column(nullable = false, updatable = false)// nullable false & updatable means the field cannoth be editted
     private Integer id;
+    @Column(nullable = false, updatable = false)
     private String name;
 
     public Finish(Integer id, String name) {

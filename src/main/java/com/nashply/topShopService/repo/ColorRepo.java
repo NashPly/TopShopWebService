@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ColorRepo extends JpaRepository<Color, Integer> {
 
-    Optional<Color> findProfileById(Integer id);
+    Color findColorById(Integer id);
 }

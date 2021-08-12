@@ -1,6 +1,8 @@
 package com.nashply.topShopService.service;
 
+import com.nashply.topShopService.exception.TopNotFoundException;
 import com.nashply.topShopService.model.Profile;
+import com.nashply.topShopService.model.StandardTop;
 import com.nashply.topShopService.repo.ProfileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,8 @@ public class ProfileService {
         return profileRepo.findAll();
     }
 
+    public Profile getProfileByID(Integer id){
+        return profileRepo.findProfileById(id);
+    }
 
 }

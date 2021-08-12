@@ -9,6 +9,7 @@ public class Arrangement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)//Enter strategy to be specific
     @Column(nullable = false, updatable = false)// nullable false & updatable means the field cannoth be editted
     private Integer id;
+    @Column(nullable = false, updatable = false)
     private String a_name;
 
     public Arrangement(Integer id, String a_name) {

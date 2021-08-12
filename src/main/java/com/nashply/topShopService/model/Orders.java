@@ -14,6 +14,7 @@ public class Orders implements Serializable {
     private String phone_number;
     private String order_date;
     private String job_name;
+    private String email_addr;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
@@ -27,13 +28,18 @@ public class Orders implements Serializable {
     @JoinColumn
     private Color color;
 
-    public Orders(Finish finish,Profile profile,Integer id, String cust_name, String phone, String order_date, String job_name) {
+    public Orders(String cust_name, String phone_number, String order_date,
+                  String job_name, String email_addr, Profile profile,
+                  Finish finish, Color color) {
 
-        this.id = id;
         this.cust_name = cust_name;
-        this.phone_number = phone;
+        this.phone_number = phone_number;
         this.order_date = order_date;
         this.job_name = job_name;
+        this.email_addr = email_addr;
+        this.profile = profile;
+        this.finish = finish;
+        this.color = color;
     }
 
     public Orders(){
@@ -101,5 +107,21 @@ public class Orders implements Serializable {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getEmail_addr() {
+        return email_addr;
+    }
+
+    public void setEmail_addr(String email_addr) {
+        this.email_addr = email_addr;
     }
 }
