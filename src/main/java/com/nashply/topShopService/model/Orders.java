@@ -61,14 +61,6 @@ public class Orders implements Serializable {
         this.cust_name = cust_name;
     }
 
-    public String getPhone() {
-        return phone_number;
-    }
-
-    public void setPhone(String phone) {
-        this.phone_number = phone;
-    }
-
     public String getOrder_date() {
         return order_date;
     }

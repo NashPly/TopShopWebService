@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,9 +40,9 @@ public class OrderResource {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Orders> saveOrder(@RequestBody Orders order){
-        orderService.saveOrder(order);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Orders> saveOrder(@RequestBody Orders order) throws IOException {
+        Orders returnedOrder = orderService.saveOrder(order);
+        return new ResponseEntity<>(returnedOrder,HttpStatus.OK);
     }
     @PutMapping("/update")
     public ResponseEntity<Orders> updateOrderList(@RequestBody Orders order){

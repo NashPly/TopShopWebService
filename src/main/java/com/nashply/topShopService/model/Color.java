@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class Color implements Serializable {
     @Id
@@ -12,19 +14,23 @@ public class Color implements Serializable {
     @Column(nullable = false, updatable = false)
     private String name;
 
-    public Color(Integer color_id, String name) {
-        this.id = color_id;
+    public Color(Integer id, String name) {
+        this.id = id;
         this.name = name;
+    }
+
+    public Color(String id){
+        this.id = valueOf(id);
     }
 
     public Color(){}
 
-    public Integer getColor_id() {
+    public Integer getId() {
         return id;
     }
 
-    public void setColor_id(Integer color_id) {
-        this.id = color_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -16,9 +16,9 @@ public class OrderListResource {
         this.orderListService = orderListService;
     }
 
-    @GetMapping("/newOrder")
+    @GetMapping("/blankOrderList")
     public ResponseEntity<OrderList> newOrderList(){
-        OrderList orderList = orderListService.newOrder();
+        OrderList orderList = orderListService.getBlankOrder();
         return new ResponseEntity<>(orderList, HttpStatus.OK);
     }
 
@@ -28,7 +28,7 @@ public class OrderListResource {
         return new ResponseEntity<>(orderList, HttpStatus.OK);
     }
 
-    @PutMapping("/save/")
+    @PutMapping("/save")
     public ResponseEntity<Integer> updateOrderList(@RequestBody OrderList orderList){
         OrderList updateOrderList =  orderListService.saveOrder(orderList);
         return new ResponseEntity<>(updateOrderList.getId(), HttpStatus.OK);

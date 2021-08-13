@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class Finish implements Serializable {
     @Id
@@ -15,6 +17,10 @@ public class Finish implements Serializable {
     public Finish(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Finish(String id){
+        this.id = valueOf(id);
     }
 
     public Finish(){}

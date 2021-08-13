@@ -1,5 +1,8 @@
 package com.nashply.topShopService.service;
 
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nashply.topShopService.model.Orders;
 import com.nashply.topShopService.repo.ColorRepo;
 import com.nashply.topShopService.repo.FinishRepo;
@@ -8,6 +11,8 @@ import com.nashply.topShopService.repo.ProfileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.DataInput;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -37,12 +42,18 @@ public class OrderService {
                 " ", " ",
                 profileRepo.findProfileById(1), finishRepo.findFinishById(1), colorRepo.findColorById(1));
         return order;
-
     }
 
-    public void saveOrder(Orders orders){
-        orderRepo.save(orders);
+    public Orders saveOrder(Orders orders) throws IOException {
+
+        Orders newOrder = new Orders(orders.getCust_name(), orders.getPhone_number(),
+                orders.getOrder_date() , orders.getJob_name(), orders.getEmail_addr(),
+                profileRepo.findProfileById(orders.getProfile().getId()),
+                finishRepo.findFinishById(orders.getFinish().getId()),
+                colorRepo.findColorById(orders.getColor().getId()));
+        return orderRepo.save(newOrder);
     }
+
     public void updateOrder(Orders order){
         Orders myOrders = orderRepo.findOrdersById(order.getId());
 //

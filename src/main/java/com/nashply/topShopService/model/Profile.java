@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class Profile implements Serializable {
     @Id
@@ -10,13 +12,17 @@ public class Profile implements Serializable {
     @Column(nullable = false, updatable = false)// nullable false & updatable means the field cannoth be editted
     private Integer id;
     @Column(nullable = false, updatable = false)
-    private String p_name;
+    private String name;
 
     public Profile(){}
 
-    public Profile(Integer id, String p_name) {
+    public Profile(String id){
+        this.id = valueOf(id);
+    }
+
+    public Profile(Integer id, String name) {
         this.id = id;
-        this.p_name = p_name;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -27,11 +33,12 @@ public class Profile implements Serializable {
         this.id = id;
     }
 
-    public String getP_name() {
-        return p_name;
+    public String getName() {
+        return name;
     }
 
-    public void setP_name(String p_name) {
-        this.p_name = p_name;
+    public void setName(String name) {
+        this.name = name;
     }
+
 }
