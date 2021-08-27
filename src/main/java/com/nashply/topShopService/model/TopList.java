@@ -18,6 +18,9 @@ public class TopList implements Serializable {
     @JoinColumn
     private Orders order;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private TopList topList;
 
     public TopList(Integer id) {
         this.id = id;
@@ -47,5 +50,13 @@ public class TopList implements Serializable {
 
     public void setOrder(Orders order) {
         this.order = order;
+    }
+
+    public TopList getTopList() {
+        return topList;
+    }
+
+    public void setTopList(TopList topList) {
+        this.topList = topList;
     }
 }

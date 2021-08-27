@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class SinkType implements Serializable {
     @Id
@@ -15,6 +17,10 @@ public class SinkType implements Serializable {
     public SinkType(Integer id, String sink_type) {
         this.id = id;
         this.sink_type = sink_type;
+    }
+
+    public SinkType(String id){
+        this.id = valueOf(id);
     }
 
     public SinkType() {

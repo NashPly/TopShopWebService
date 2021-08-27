@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class Tops implements Serializable {
     @Id
@@ -14,8 +16,9 @@ public class Tops implements Serializable {
     @JoinColumn
     private TopType topType;
     private String length;
+    private String depth;
     private String lSide;
-    private String RSide;
+    private String rSide;
     private boolean hasSink;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -26,17 +29,41 @@ public class Tops implements Serializable {
     @JoinColumn
     private SinkType sinkType;
 
+    @Column(nullable = true)
     private String sinkMeasurement;
+    @Column(nullable = true)
     private String sinkSide;
 
-    public Tops(Integer id, String length, String lSide, String RSide, boolean hasSink, String sinkMeasurement, String sinkSide) {
-        this.id = id;
-        this.length = length;
+    public Tops(TopType topType, String lSide, String rSide,
+                boolean hasSink, TopPlacement topPlacement, SinkType sinkType,
+                String sinkMeasurement, String sinkSide) {
+        this.topType = topType;
         this.lSide = lSide;
-        this.RSide = RSide;
+        this.rSide = rSide;
         this.hasSink = hasSink;
+        this.topPlacement = topPlacement;
+        this.sinkType = sinkType;
         this.sinkMeasurement = sinkMeasurement;
         this.sinkSide = sinkSide;
+    }
+
+    public Tops(Integer id,TopType topType, String length, String lSide, String rSide,
+                boolean hasSink, TopPlacement topPlacement, SinkType sinkType,
+                String sinkMeasurement, String sinkSide) {
+        this.id = id;
+        this.topType = topType;
+        this.length = length;
+        this.lSide = lSide;
+        this.rSide = rSide;
+        this.hasSink = hasSink;
+        this.topPlacement = topPlacement;
+        this.sinkType = sinkType;
+        this.sinkMeasurement = sinkMeasurement;
+        this.sinkSide = sinkSide;
+    }
+
+    public Tops(String id){
+        this.id = valueOf(id);
     }
 
     public Tops(){}
@@ -57,6 +84,14 @@ public class Tops implements Serializable {
         this.length = length;
     }
 
+    public String getDepth() {
+        return depth;
+    }
+
+    public void setDepth(String depth) {
+        this.depth = depth;
+    }
+
     public String getlSide() {
         return lSide;
     }
@@ -65,12 +100,12 @@ public class Tops implements Serializable {
         this.lSide = lSide;
     }
 
-    public String getRSide() {
-        return RSide;
+    public String getrSide() {
+        return rSide;
     }
 
-    public void setRSide(String RSide) {
-        this.RSide = RSide;
+    public void setrSide(String rSide) {
+        this.rSide = rSide;
     }
 
     public boolean isHasSink() {
@@ -95,5 +130,29 @@ public class Tops implements Serializable {
 
     public void setSinkSide(String sinkSide) {
         this.sinkSide = sinkSide;
+    }
+
+    public TopType getTopType() {
+        return topType;
+    }
+
+    public void setTopType(TopType topType) {
+        this.topType = topType;
+    }
+
+    public TopPlacement getTopPlacement() {
+        return topPlacement;
+    }
+
+    public void setTopPlacement(TopPlacement topPlacement) {
+        this.topPlacement = topPlacement;
+    }
+
+    public SinkType getSinkType() {
+        return sinkType;
+    }
+
+    public void setSinkType(SinkType sinkType) {
+        this.sinkType = sinkType;
     }
 }

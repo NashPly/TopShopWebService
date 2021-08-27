@@ -3,6 +3,8 @@ package com.nashply.topShopService.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import static java.lang.Integer.valueOf;
+
 @Entity
 public class TopType implements Serializable {
     @Id
@@ -18,6 +20,10 @@ public class TopType implements Serializable {
         this.id = id;
         this.type_name = type_name;
         this.hasBacksplash = hasBacksplash;
+    }
+
+    public TopType(String id){
+        this.id = valueOf(id);
     }
 
     public TopType() {
