@@ -18,9 +18,15 @@ public class TopsResource {
     }
 
     @GetMapping("/getNewTop")
-    public ResponseEntity<Tops> getAllSTopsById(){
+    public ResponseEntity<Tops> getBlankTop(){
         Tops topss = topsService.getNewTop(1,1,1);
         return new ResponseEntity<>(topss, HttpStatus.OK);
+    }
+
+    @GetMapping("/getTopById/{id}")
+    public ResponseEntity<Tops> getTopById(@PathVariable("id") Integer id){
+        Tops tops = topsService.getTopById(id);
+        return new ResponseEntity<>(tops, HttpStatus.OK);
     }
 
     @PostMapping("/save")

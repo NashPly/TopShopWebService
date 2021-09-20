@@ -21,6 +21,9 @@ public class Tops implements Serializable {
     private String rSide;
     private boolean hasSink;
 
+    private String sinkMeasurement;
+    private String sinkSide;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private TopPlacement topPlacement;
@@ -29,15 +32,13 @@ public class Tops implements Serializable {
     @JoinColumn
     private SinkType sinkType;
 
-    @Column(nullable = true)
-    private String sinkMeasurement;
-    @Column(nullable = true)
-    private String sinkSide;
 
-    public Tops(TopType topType, String lSide, String rSide,
+    public Tops(TopType topType, String length, String depth, String lSide, String rSide,
                 boolean hasSink, TopPlacement topPlacement, SinkType sinkType,
                 String sinkMeasurement, String sinkSide) {
         this.topType = topType;
+        this.length = length;
+        this.depth = depth;
         this.lSide = lSide;
         this.rSide = rSide;
         this.hasSink = hasSink;
@@ -47,12 +48,13 @@ public class Tops implements Serializable {
         this.sinkSide = sinkSide;
     }
 
-    public Tops(Integer id,TopType topType, String length, String lSide, String rSide,
+    public Tops(Integer id,TopType topType, String length, String depth, String lSide, String rSide,
                 boolean hasSink, TopPlacement topPlacement, SinkType sinkType,
                 String sinkMeasurement, String sinkSide) {
         this.id = id;
         this.topType = topType;
         this.length = length;
+        this.depth = depth;
         this.lSide = lSide;
         this.rSide = rSide;
         this.hasSink = hasSink;

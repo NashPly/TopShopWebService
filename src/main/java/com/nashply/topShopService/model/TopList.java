@@ -20,7 +20,7 @@ public class TopList implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
-    private TopList topList;
+    private Tops topId;
 
     public TopList(Integer id) {
         this.id = id;
@@ -52,11 +52,6 @@ public class TopList implements Serializable {
         this.order = order;
     }
 
-    public TopList getTopList() {
-        return topList;
-    }
+    public Tops getTopId() { return topId; }
 
-    public void setTopList(TopList topList) {
-        this.topList = topList;
-    }
 }

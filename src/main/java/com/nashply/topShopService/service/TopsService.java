@@ -1,7 +1,6 @@
 package com.nashply.topShopService.service;
 
-import com.nashply.topShopService.model.SinkType;
-import com.nashply.topShopService.model.TopPlacement;
+import com.nashply.topShopService.exception.TopNotFoundException;
 import com.nashply.topShopService.model.Tops;
 import com.nashply.topShopService.repo.SinkTypeRepo;
 import com.nashply.topShopService.repo.TopPlacementRepo;
@@ -32,17 +31,18 @@ public class TopsService {
     public Tops saveTop(Tops top){
         Tops tops = new Tops(top.getId(),this.topTypeRepo.findTopTypeById(top.getTopType().getId()),
                 top.getLength(),
+                top.getDepth(),
                 top.getlSide(),
                 top.getrSide(),
                 top.isHasSink(),
                 this.topPlacementRepo.findTopPlacementById(top.getTopPlacement().getId()),
                 this.sinkTypeRepo.findSinkTypeById(top.getSinkType().getId()),
-                null,null);
+                top.getSinkMeasurement(),top.getSinkSide());
         return this.topsRepo.save(tops);
     }
 
     public Tops getNewTop(Integer placement, Integer type, Integer sinkType){
-        Tops top = new Tops(this.topTypeRepo.findTopTypeById(type),
+        Tops top = new Tops(this.topTypeRepo.findTopTypeById(type),"0","0",
                 "Raw","Raw",
                 false,
                 this.topPlacementRepo.findTopPlacementById(placement),
@@ -50,4 +50,10 @@ public class TopsService {
                 null,null);
         return top;
     }
-}
+
+    public Tops getTopById(Integer id){
+        return topsRepo.findById(id)
+                .orElseThrow(() -> new TopNotFoundException("Top by id: " + id + " was not found"));
+        }
+    }
+
